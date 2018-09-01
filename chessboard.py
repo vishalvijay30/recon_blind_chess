@@ -1,4 +1,4 @@
-from imports import *
+from utils import *
 
 class Chessboard(GridLayout):
     def gen_image_dict(self, *args, image_dir=cp_images):
@@ -26,6 +26,8 @@ class Chessboard(GridLayout):
 
         # Get the board positions from the fen
         b = str(board.fen).split()[4].replace('/', '')[7:]
+
+        print("harambe", b)
 
         # Replace empty spaces with dots
         for num in range(1, 10):
@@ -81,8 +83,10 @@ class Chessboard(GridLayout):
             board.push(engine_move)
             Clock.schedule_once(self.update_positions)
 
-        print("belief:\n", board_piece_level_matrix)
-        print("sensory input:\n", board_visibility_matrix)
+        # print("belief:\n")
+        # update_board_piece_level_matrix(board_piece_level_matrix, [chess.WHITE])
+        # print_board_piece_level_matrix(board_piece_level_matrix)
+        # print("sensory input:\n", board_visibility_matrix)
 
     def engine_move(self, move, *args):
         ids = {child.id: child for child in self.children}
